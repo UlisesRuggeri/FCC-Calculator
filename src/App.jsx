@@ -31,11 +31,9 @@ function App() {
         setExpression(expression + symbol);
       }
     } else if (symbol === ".") {
-      // split by operators and get last number
       const lastNumber = expression.split(/[-+/*]/g).pop();
       if (!lastNumber) return;
       console.log("lastNumber :>> ", lastNumber);
-      // if last number already has a decimal, don't add another
       if (lastNumber?.includes(".")) return;
       setExpression(expression + symbol);
     } else {
@@ -48,14 +46,11 @@ function App() {
   };
 
   const calculate = () => {
-    // if last char is an operator, do nothing
     if (isOperator(et.charAt(et.length - 1))) return;
-    // clean the expression so that two operators in a row uses the last operator
-    // 5 * - + 5 = 10
+ 
     const parts = et.split(" ");
     const newParts = [];
 
-    // go through parts backwards
     for (let i = parts.length - 1; i >= 0; i--) {
       if (["*", "/", "+"].includes(parts[i]) && isOperator(parts[i - 1])) {
         newParts.unshift(parts[i]);
@@ -91,129 +86,111 @@ function App() {
           <button
             id="clear"
             onClick={() => buttonPress("clear")}
-            className="light-gray"
           >
-            C
+            
           </button>
           <button
             id="negative"
             onClick={() => buttonPress("negative")}
-            className="light-gray"
           >
             +/-
           </button>
           <button
             id="percentage"
             onClick={() => buttonPress("percentage")}
-            className="light-gray"
           >
             %
           </button>
           <button
             id="divide"
             onClick={() => buttonPress("/")}
-            className="yellow"
           >
             /
           </button>
           <button
             id="seven"
             onClick={() => buttonPress("7")}
-            className="dark-gray"
           >
             7
           </button>
           <button
             id="eight"
             onClick={() => buttonPress("8")}
-            className="dark-gray"
           >
             8
           </button>
           <button
             id="nine"
             onClick={() => buttonPress("9")}
-            className="dark-gray"
           >
             9
           </button>
           <button
             id="multiply"
             onClick={() => buttonPress("*")}
-            className="yellow"
           >
             *
           </button>
           <button
             id="four"
             onClick={() => buttonPress("4")}
-            className="dark-gray"
           >
             4
           </button>
           <button
             id="five"
             onClick={() => buttonPress("5")}
-            className="dark-gray"
           >
             5
           </button>
           <button
             id="six"
             onClick={() => buttonPress("6")}
-            className="dark-gray"
           >
             6
           </button>
           <button
             id="subtract"
             onClick={() => buttonPress("-")}
-            className="yellow"
           >
             -
           </button>
           <button
             id="one"
             onClick={() => buttonPress("1")}
-            className="dark-gray"
           >
             1
           </button>
           <button
             id="two"
             onClick={() => buttonPress("2")}
-            className="dark-gray"
           >
             2
           </button>
           <button
             id="three"
             onClick={() => buttonPress("3")}
-            className="dark-gray"
           >
             3
           </button>
-          <button id="add" onClick={() => buttonPress("+")} className="yellow">
+          <button id="add" onClick={() => buttonPress("+")} >
             +
           </button>
           <button
             id="zero"
             onClick={() => buttonPress("0")}
-            className="dark-gray"
           >
             0
           </button>
           <button
             id="decimal"
             onClick={() => buttonPress(".")}
-            className="dark-gray"
           >
             .
           </button>
           <button
             id="equals"
             onClick={() => buttonPress("=")}
-            className="yellow"
           >
             =
           </button>
